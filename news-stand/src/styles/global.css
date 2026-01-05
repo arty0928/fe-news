@@ -18,4 +18,4 @@
 
 /* Components */
 @import './components/header.css';
-@import './components/latestNewsCard.css';
+@import '../features/latestNews/styles/latestNewsCard.css';
