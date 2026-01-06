@@ -50,8 +50,8 @@
 
 /* 구독 뱃지 */
 .badge {
-  width: 20px;
-  height: 20px;
+  width: var(--badge-size);
+  height: var(--badge-size);
   background-color: var(--surface-brand-alt);
   color: var(--text-white-weak);
   font-size: var(--display-medium12);
@@ -68,12 +68,12 @@
   gap: var(--gap-xs);
 
   & button {
-    width: 20px;
-    height: 20px;
+    width: var(--view-toggle-btn-size);
+    height: var(--view-toggle-btn-size);
     padding: 0;
     border: none;
     background-color: transparent;
-    background-size: 20px 20px;
+    background-size: var(--view-toggle-btn-size) var(--view-toggle-btn-size);
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;

@@ -17,8 +17,8 @@
 }
 
 .news-card {
-  width: 461px;
-  height: 49px;
+  width: var(--news-card-width);
+  height: var(--news-card-height);
   border: var(--border-width) solid var(--border-default);
   background-color: var(--surface-alt);
 }

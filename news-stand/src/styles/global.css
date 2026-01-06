@@ -8,6 +8,7 @@
 @import './variables/typography.css';
 @import './variables/object.css';
 @import './variables/spacing.css';
+@import './variables/components.css';
 
 /* Base */
 @import './base/fonts.css';
