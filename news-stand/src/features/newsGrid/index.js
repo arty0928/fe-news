@@ -18,11 +18,13 @@ export async function initNewsGrid() {
 
     managePressState.subscribe((pageData) => {
       renderPressGrid(pageData);
+      updateNavigationButtons();
     });
 
     renderPressGrid(managePressState.getCurrentPageData());
 
     setupNavigationButtons();
+    updateNavigationButtons();
   } catch (error) {
     console.error('newsGrid 초기화 실패:', error);
   }
@@ -43,4 +45,12 @@ function setupNavigationButtons() {
       managePressState.nextPage();
     });
   }
+}
+
+function updateNavigationButtons() {
+  const prevButton = document.querySelector('.nav-button.prev');
+  const nextButton = document.querySelector('.nav-button.next');
+
+  prevButton?.classList.toggle('disabled', !managePressState.hasPrevPage());
+  nextButton?.classList.toggle('disabled', !managePressState.hasNextPage());
 }
