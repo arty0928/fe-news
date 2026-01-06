@@ -16,7 +16,7 @@
     background-color: transparent;
     cursor: pointer;
     outline: none;
-    transition: opacity 0.3s ease-in-out;
+    transition: opacity var(--transition-normal) ease-in-out;
 
     & img {
       width: var(--news-grid-item-width);
@@ -54,7 +54,7 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: background-color 0.2s ease;
+      transition: background-color var(--transition-fast) ease;
       border-right: var(--border-width) solid var(--border-default);
       border-bottom: var(--border-width) solid var(--border-default);
 
@@ -72,7 +72,7 @@
         max-width: var(--news-item-logo-max-size);
         max-height: var(--news-item-logo-max-size);
         object-fit: contain;
-        transition: opacity 0.2s ease;
+        transition: opacity var(--transition-fast) ease;
       }
 
       /* Suscribe Button */
@@ -89,13 +89,21 @@
         height: var(--btn-subscribe-height);
         opacity: 0;
         pointer-events: none;
-        transition: opacity 0.2s ease;
-        background-color: var(--surface-brand-default);
-        color: var(--text-white-default);
-        border: none;
-        border-radius: var(--radius-50);
+        transition: opacity var(--transition-fast) ease, color var(--transition-fast) ease,
+          border-color var(--transition-fast) ease;
+        background-color: var(--surface-default);
+        color: var(--text-weak);
+        border: var(--border-width) solid var(--border-default);
+        border-radius: var(--radius-full);
         font-size: var(--display-bold12);
         font-weight: var(--fw-bold);
+        cursor: pointer;
+
+        /* 버튼 자체 hover 시 */
+        &:hover {
+          color: var(--text-bold);
+          border-color: var(--border-bold);
+        }
       }
 
       /* Hover State */
