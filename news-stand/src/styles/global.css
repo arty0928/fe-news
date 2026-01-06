@@ -20,4 +20,4 @@
 @import './components/header.css';
 @import '../features/latestNews/styles/latestNewsCard.css';
 @import '../features/navigation/styles/navigation.css';
-@import '../features/newsTable/styles/newsTable.css';
+@import '../features/newsGrid/styles/newsGrid.css';
