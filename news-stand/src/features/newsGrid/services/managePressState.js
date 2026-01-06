@@ -3,11 +3,13 @@
  * - 전체 언론사 데이터 저장
  * - 현재 페이지 관리
  * - 페이지당 24개(4x6) 언론사 반환
+ * - 최대 페이지까지만 표시
  */
 export const managePressState = {
   allPress: [],
   currentPage: 0,
   itemsPerPage: 24,
+  maxPages: 4,
   listeners: [],
 
   init(pressData) {
@@ -22,7 +24,8 @@ export const managePressState = {
   },
 
   getTotalPages() {
-    return Math.ceil(this.allPress.length / this.itemsPerPage);
+    const calculatedPages = Math.ceil(this.allPress.length / this.itemsPerPage);
+    return Math.min(calculatedPages, this.maxPages);
   },
 
   hasNextPage() {
