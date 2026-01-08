@@ -1,8 +1,8 @@
 export function createNewsSubscribeStore() {
   // localStorage key 상수
-  const STORAGE_KEY = 'news-subscribed-ids';
+  const STORAGE_KEY = 'news-subscribed-list';
 
-  // 구독한 언론사 ID를 저장할 Set
+  // 구독한 언론사 press 저장할 Set
   let subscribedSet = new Set(JSON.parse(localStorage.getItem(STORAGE_KEY)) || []);
 
   // Observer(listener) 목록
@@ -26,13 +26,13 @@ export function createNewsSubscribeStore() {
     };
   }
 
-  function toggle(publisherId) {
+  function toggle(press) {
     // 1. 기존 subscribedSet을 직접 mutate 하지 말 것
     // 2. 새로운 Set 생성 (기존 데이터 복사)
     const newSet = new Set(subscribedSet);
 
-    // 3. publisherId가 이미 있으면 제거, 없으면 추가
-    has(publisherId) ? newSet.delete(publisherId) : newSet.add(publisherId);
+    // 3. press 이미 있으면 제거, 없으면 추가
+    has(press) ? newSet.delete(press) : newSet.add(press);
 
     // 4. subscribedSet 교체
     subscribedSet = newSet;
@@ -44,8 +44,8 @@ export function createNewsSubscribeStore() {
     notify();
   }
 
-  function has(publisherId) {
-    return subscribedSet.has(publisherId);
+  function has(press) {
+    return subscribedSet.has(press);
   }
 
   function getAll() {
