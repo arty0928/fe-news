@@ -1,11 +1,8 @@
 export function createNewsSubscribeStore() {
-  // localStorage key 상수
   const STORAGE_KEY = 'news-subscribed-list';
 
-  // 구독한 언론사 press 저장할 Set
   let subscribedSet = new Set(JSON.parse(localStorage.getItem(STORAGE_KEY)) || []);
 
-  // Observer(listener) 목록
   const listeners = new Set();
 
   function notify() {
@@ -13,34 +10,26 @@ export function createNewsSubscribeStore() {
   }
 
   function syncToLocalStorage() {
-    // JSON.stringify 후 localStorage에 저장
     localStorage.setItem(STORAGE_KEY, JSON.stringify([...subscribedSet]));
   }
 
   function subscribe(listener) {
     listeners.add(listener);
 
-    // unsubscribe 함수 반환
     return () => {
       listeners.delete(listener);
     };
   }
 
   function toggle(press) {
-    // 1. 기존 subscribedSet을 직접 mutate 하지 말 것
-    // 2. 새로운 Set 생성 (기존 데이터 복사)
     const newSet = new Set(subscribedSet);
 
-    // 3. press 이미 있으면 제거, 없으면 추가
     has(press) ? newSet.delete(press) : newSet.add(press);
 
-    // 4. subscribedSet 교체
     subscribedSet = newSet;
 
-    // 5. localStorage 동기화
     syncToLocalStorage();
 
-    // 6. notify 호출
     notify();
   }
 
